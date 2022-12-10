@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/python:3.9
+FROM public.ecr.aws/lambda/python:3.9-arm64
 ENV POETRY_VERSION=1.3.0
 # Install poetry
 RUN pip install "poetry==$POETRY_VERSION"

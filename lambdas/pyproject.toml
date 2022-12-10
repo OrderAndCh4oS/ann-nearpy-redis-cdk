@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.9"
 NearPy = "^1.0.0"
 pandas = "^1.5.2"
+redis = "^4.4.0"
 
 
 [build-system]

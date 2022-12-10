@@ -23,13 +23,21 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
     // Allow incoming traffic on the Redis port
     cacheSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(6379), 'allow incoming traffic on Redis port');
 
+    const cacheSubnetGroup = new cache.CfnSubnetGroup(this, 'RedisSubnetGroup', {
+      subnetIds: vpc.privateSubnets.map(ps => ps.subnetId),
+      description: 'RedisSubnetGroup Private Subnets'
+    });
+
     // Create a Redis cache
     const redisCache = new cache.CfnCacheCluster(this, 'RedisCache', {
       engine: 'redis',
-      cacheNodeType: 'cache.m3.medium',
+      cacheNodeType: 'cache.t3.small',
       numCacheNodes: 1,
-      vpcSecurityGroupIds: [cacheSecurityGroup.securityGroupId]
+      vpcSecurityGroupIds: [cacheSecurityGroup.securityGroupId],
+      cacheSubnetGroupName: cacheSubnetGroup.ref
     });
+
+    redisCache.addDependsOn(cacheSubnetGroup);
 
     // Create a security group for the Lambda function
     const lambdaSecurityGroup = new ec2.SecurityGroup(this, 'LambdaSecurityGroup', {
@@ -43,7 +51,7 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
       code: lambda.DockerImageCode.fromImageAsset(
           path.join(__dirname, '../lambdas'),
           {
-            cmd: ["lambda_1.index.handler"]
+            cmd: ["handler_one.index.handler"]
           }
       ),
       architecture: Architecture.ARM_64,
@@ -55,7 +63,7 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
       code: lambda.DockerImageCode.fromImageAsset(
           path.join(__dirname, '../lambdas'),
           {
-            cmd: ["lambda_2.index.handler"]
+            cmd: ["handler_two.index.handler"]
           }
       ),
       architecture: Architecture.ARM_64,
@@ -67,7 +75,7 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
       code: lambda.DockerImageCode.fromImageAsset(
           path.join(__dirname, '../lambdas'),
           {
-            cmd: ["redis.index.handler"]
+            cmd: ["handler_redis.index.handler"]
           }
       ),
       architecture: Architecture.ARM_64,

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="410b79b4-e1e1-4e41-bd58-18ad76ebbd78" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nearpy-ann-redis-cdk.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/redis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2IhRZcydjoH1JOIfbfuOwn0x3oU" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="compactDirectories" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Users/seancooper/code/ann-nearpy-redis-cdk/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="410b79b4-e1e1-4e41-bd58-18ad76ebbd78" name="Changes" comment="" />
+      <created>1670631884279</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670631884279</updated>
+      <workItem from="1670631885508" duration="4435000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
