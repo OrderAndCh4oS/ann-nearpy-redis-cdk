@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="410b79b4-e1e1-4e41-bd58-18ad76ebbd78" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_build_cache/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_build_cache/index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_clear_cache/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_clear_cache/index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_search_embeddings/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_search_embeddings/index.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_add_embedding/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_add_embedding/index.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670631884279</updated>
-      <workItem from="1670631885508" duration="12762000" />
+      <workItem from="1670631885508" duration="14059000" />
     </task>
     <servers />
   </component>
