@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="410b79b4-e1e1-4e41-bd58-18ad76ebbd78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/nearpy-ann-redis-cdk.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/redis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +44,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670631884279</updated>
-      <workItem from="1670631885508" duration="4435000" />
+      <workItem from="1670631885508" duration="6246000" />
     </task>
     <servers />
   </component>
