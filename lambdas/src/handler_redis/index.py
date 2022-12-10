@@ -7,6 +7,9 @@ from nearpy.hashes import RandomBinaryProjections
 from nearpy.filters import NearestFilter
 from nearpy.storage import RedisStorage
 
+# Todo: Create endpoint to add embedding, data should be key to dynamoDb row.
+# Todo: Create endpoint to search embedding, should return a list of dynamoDb keys and accuracy
+
 cache_host = os.environ["CACHE_HOST"]
 cache_port = os.environ["CACHE_PORT"]
 

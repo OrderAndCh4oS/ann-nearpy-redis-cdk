@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="410b79b4-e1e1-4e41-bd58-18ad76ebbd78" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_one/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_one/index.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_two/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_two/index.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670631884279</updated>
-      <workItem from="1670631885508" duration="11865000" />
+      <workItem from="1670631885508" duration="12281000" />
     </task>
     <servers />
   </component>
