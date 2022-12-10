@@ -49,5 +49,5 @@ def handler(event, context):
 
     return {
         "statusCode": 200,
-        "body": json.dumps({"nearest": nearest}, cls=NumpyEncoder)
+        "body": json.dumps([{"key": nearest[i][1], "accuracy": nearest[i][2]} for i in range(len(nearest))])
     }
