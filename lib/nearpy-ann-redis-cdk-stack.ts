@@ -3,6 +3,8 @@ import { Construct } from 'constructs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cache from 'aws-cdk-lib/aws-elasticache';
+import {Architecture} from "aws-cdk-lib/aws-lambda";
+import * as path from "path";
 
 export class NearpyAnnRedisCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -37,17 +39,44 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
     // Grant the Lambda function access to the Redis cache
     cacheSecurityGroup.addIngressRule(lambdaSecurityGroup, ec2.Port.tcp(6379), 'grant access to Redis cache');
 
-    // Create a Lambda function
-    const lambdaFn = new lambda.Function(this, 'RedisFunction', {
-      runtime: lambda.Runtime.PYTHON_3_9,
-      handler: 'lambda_function.lambda_handler',
-      code: lambda.Code.fromAsset('lambda_function'),
+    new lambda.DockerImageFunction(this, 'LambdaFunction_1', {
+      code: lambda.DockerImageCode.fromImageAsset(
+          path.join(__dirname, '../lambdas'),
+          {
+            cmd: ["lambda_1.index.handler"]
+          }
+      ),
+      architecture: Architecture.ARM_64,
+      securityGroups: [lambdaSecurityGroup],
+      vpc
+    });
+
+    new lambda.DockerImageFunction(this, 'LambdaFunction_2', {
+      code: lambda.DockerImageCode.fromImageAsset(
+          path.join(__dirname, '../lambdas'),
+          {
+            cmd: ["lambda_2.index.handler"]
+          }
+      ),
+      architecture: Architecture.ARM_64,
+      securityGroups: [lambdaSecurityGroup],
+      vpc
+    });
+
+    new lambda.DockerImageFunction(this, 'RedisLambdaFunction', {
+      code: lambda.DockerImageCode.fromImageAsset(
+          path.join(__dirname, '../lambdas'),
+          {
+            cmd: ["redis.index.handler"]
+          }
+      ),
+      architecture: Architecture.ARM_64,
       securityGroups: [lambdaSecurityGroup],
       vpc,
       environment: {
         CACHE_HOST: redisCache.attrRedisEndpointAddress,
         CACHE_PORT: redisCache.attrRedisEndpointPort
-      }
+      },
     });
   }
 }
