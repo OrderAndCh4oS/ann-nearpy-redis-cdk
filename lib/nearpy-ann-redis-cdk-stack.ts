@@ -5,6 +5,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cache from 'aws-cdk-lib/aws-elasticache';
 import {Architecture} from "aws-cdk-lib/aws-lambda";
 import * as path from "path";
+import {Duration} from 'aws-cdk-lib';
 
 export class NearpyAnnRedisCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -47,30 +48,6 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
     // Grant the Lambda function access to the Redis cache
     cacheSecurityGroup.addIngressRule(lambdaSecurityGroup, ec2.Port.tcp(6379), 'grant access to Redis cache');
 
-    new lambda.DockerImageFunction(this, 'LambdaFunction_1', {
-      code: lambda.DockerImageCode.fromImageAsset(
-          path.join(__dirname, '../lambdas'),
-          {
-            cmd: ["handler_one.index.handler"]
-          }
-      ),
-      architecture: Architecture.ARM_64,
-      securityGroups: [lambdaSecurityGroup],
-      vpc
-    });
-
-    new lambda.DockerImageFunction(this, 'LambdaFunction_2', {
-      code: lambda.DockerImageCode.fromImageAsset(
-          path.join(__dirname, '../lambdas'),
-          {
-            cmd: ["handler_two.index.handler"]
-          }
-      ),
-      architecture: Architecture.ARM_64,
-      securityGroups: [lambdaSecurityGroup],
-      vpc
-    });
-
     new lambda.DockerImageFunction(this, 'RedisLambdaFunction', {
       code: lambda.DockerImageCode.fromImageAsset(
           path.join(__dirname, '../lambdas'),
@@ -78,6 +55,8 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
             cmd: ["handler_redis.index.handler"]
           }
       ),
+      memorySize: 512,
+      timeout: Duration.seconds(12),
       architecture: Architecture.ARM_64,
       securityGroups: [lambdaSecurityGroup],
       vpc,

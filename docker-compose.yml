@@ -1,0 +1,29 @@
+version: '3.8'
+
+
+services:
+#  app:
+#    container_name: nearpy_app
+#    build:
+#      context: ./lambdas
+#      dockerfile: Dockerfile
+#    restart: unless-stopped
+#    environment:
+#      CACHE_HOST: redis
+#      CACHE_PORT: 6379
+#    volumes:
+#      - ./lambdas/src:/var/task/src
+#    ports:
+#      - "9000:8080"
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    entrypoint: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    networks:
+      - default
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes

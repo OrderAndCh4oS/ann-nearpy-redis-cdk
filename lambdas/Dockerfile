@@ -1,5 +1,6 @@
 FROM public.ecr.aws/lambda/python:3.9-arm64
 ENV POETRY_VERSION=1.3.0
+ENV CACHE_HOST=some_value
 # Install poetry
 RUN pip install "poetry==$POETRY_VERSION"
 # Copy only requirements to cache them in docker layer
@@ -10,4 +11,4 @@ RUN poetry config virtualenvs.create false && poetry install --no-interaction --
 # Copy our Flask app to the Docker image
 COPY src ${LAMBDA_TASK_ROOT}/
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
-CMD [ "handler_one.index.handler" ]
+CMD [ "handler_redis.index.handler" ]

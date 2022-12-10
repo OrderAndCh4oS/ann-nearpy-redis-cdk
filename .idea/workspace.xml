@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="410b79b4-e1e1-4e41-bd58-18ad76ebbd78" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_one/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_one/index.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_two/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_two/index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,11 +37,32 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/seancooper/code/ann-nearpy-redis-cdk/lambdas/src",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "/Users/seancooper/code/ann-nearpy-redis-cdk/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lambdas/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670631884279</updated>
-      <workItem from="1670631885508" duration="6246000" />
+      <workItem from="1670631885508" duration="11865000" />
     </task>
     <servers />
   </component>
