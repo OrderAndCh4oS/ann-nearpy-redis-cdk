@@ -2,20 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="410b79b4-e1e1-4e41-bd58-18ad76ebbd78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_build_cache/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_build_cache/index.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_clear_cache/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_clear_cache/index.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_search_embeddings/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambdas/src/handler_search_embeddings/index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambdas/src/search_embeddings/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_add_embedding/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_redis/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/handler_add_embedding/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_add_embedding/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/_requests.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_add_embedding/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/add_embedding/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_build_cache/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/add_embedding/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_build_cache/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/build_cache/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_clear_cache/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/build_cache/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_clear_cache/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/clear_cache/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_search_embeddings/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/clear_cache/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambdas/src/handler_search_embeddings/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambdas/src/search_embeddings/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nearpy-ann-redis-cdk-stack.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTTP Request" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,7 +58,19 @@
       <recent name="$PROJECT_DIR$/lambdas/src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="HTTP Request._requests | #4">
+    <configuration name="_requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/_requests.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="_requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/_requests.http" index="2" requestIdentifier="#2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="_requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/_requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="_requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/_requests.http" index="4" requestIdentifier="#4" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -60,6 +81,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request._requests | #4" />
+        <item itemvalue="HTTP Request._requests | #3" />
+        <item itemvalue="HTTP Request._requests | #1" />
+        <item itemvalue="HTTP Request._requests | #2" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -72,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670631884279</updated>
-      <workItem from="1670631885508" duration="14059000" />
+      <workItem from="1670631885508" duration="18422000" />
     </task>
     <servers />
   </component>

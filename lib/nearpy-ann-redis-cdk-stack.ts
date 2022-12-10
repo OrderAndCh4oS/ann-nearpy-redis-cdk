@@ -6,6 +6,7 @@ import * as cache from 'aws-cdk-lib/aws-elasticache';
 import {Architecture} from "aws-cdk-lib/aws-lambda";
 import * as path from "path";
 import {Duration} from 'aws-cdk-lib';
+import {Cors, LambdaIntegration, RestApi} from 'aws-cdk-lib/aws-apigateway';
 
 export class NearpyAnnRedisCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -17,20 +18,20 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
     });
 
     // Create a security group for the Redis cache
-    const cacheSecurityGroup = new ec2.SecurityGroup(this, 'CacheSecurityGroup', {
+    const cacheSecurityGroup = new ec2.SecurityGroup(this, 'AnnCacheSecurityGroup', {
       vpc
     });
 
     // Allow incoming traffic on the Redis port
     cacheSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(6379), 'allow incoming traffic on Redis port');
 
-    const cacheSubnetGroup = new cache.CfnSubnetGroup(this, 'RedisSubnetGroup', {
+    const cacheSubnetGroup = new cache.CfnSubnetGroup(this, 'AnnCacheSubnetGroup', {
       subnetIds: vpc.privateSubnets.map(ps => ps.subnetId),
       description: 'RedisSubnetGroup Private Subnets'
     });
 
     // Create a Redis cache
-    const redisCache = new cache.CfnCacheCluster(this, 'RedisCache', {
+    const redisCache = new cache.CfnCacheCluster(this, 'AnnCacheRedis', {
       engine: 'redis',
       cacheNodeType: 'cache.t3.small',
       numCacheNodes: 1,
@@ -41,22 +42,22 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
     redisCache.addDependsOn(cacheSubnetGroup);
 
     // Create a security group for the Lambda function
-    const lambdaSecurityGroup = new ec2.SecurityGroup(this, 'LambdaSecurityGroup', {
+    const lambdaSecurityGroup = new ec2.SecurityGroup(this, 'AnnCacheLambdaSecurityGroup', {
       vpc
     });
 
     // Grant the Lambda function access to the Redis cache
     cacheSecurityGroup.addIngressRule(lambdaSecurityGroup, ec2.Port.tcp(6379), 'grant access to Redis cache');
 
-    new lambda.DockerImageFunction(this, 'RedisLambdaFunction', {
+    const buildCacheHandler = new lambda.DockerImageFunction(this, 'BuildAnnCacheLambdaFunction', {
       code: lambda.DockerImageCode.fromImageAsset(
           path.join(__dirname, '../lambdas'),
           {
-            cmd: ["handler_redis.index.handler"]
+            cmd: ["build_cache.index.handler"]
           }
       ),
-      memorySize: 512,
-      timeout: Duration.seconds(12),
+      memorySize: 1024,
+      timeout: Duration.seconds(30),
       architecture: Architecture.ARM_64,
       securityGroups: [lambdaSecurityGroup],
       vpc,
@@ -65,5 +66,77 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
         CACHE_PORT: redisCache.attrRedisEndpointPort
       },
     });
+
+    const clearCacheHandler = new lambda.DockerImageFunction(this, 'ClearAnnCacheLambdaFunction', {
+      code: lambda.DockerImageCode.fromImageAsset(
+          path.join(__dirname, '../lambdas'),
+          {
+            cmd: ["clear_cache.index.handler"]
+          }
+      ),
+      memorySize: 256,
+      timeout: Duration.seconds(3),
+      architecture: Architecture.ARM_64,
+      securityGroups: [lambdaSecurityGroup],
+      vpc,
+      environment: {
+        CACHE_HOST: redisCache.attrRedisEndpointAddress,
+        CACHE_PORT: redisCache.attrRedisEndpointPort
+      },
+    });
+
+    const addToCacheHandler = new lambda.DockerImageFunction(this, 'AddAnnCacheLambdaFunction', {
+      code: lambda.DockerImageCode.fromImageAsset(
+          path.join(__dirname, '../lambdas'),
+          {
+            cmd: ["add_embedding.index.handler"]
+          }
+      ),
+      memorySize: 256,
+      timeout: Duration.seconds(3),
+      architecture: Architecture.ARM_64,
+      securityGroups: [lambdaSecurityGroup],
+      vpc,
+      environment: {
+        CACHE_HOST: redisCache.attrRedisEndpointAddress,
+        CACHE_PORT: redisCache.attrRedisEndpointPort
+      },
+    });
+
+    const searchCacheHandler = new lambda.DockerImageFunction(this, 'QueryAnnCacheLambdaFunction', {
+      code: lambda.DockerImageCode.fromImageAsset(
+          path.join(__dirname, '../lambdas'),
+          {
+            cmd: ["search_embeddings.index.handler"]
+          }
+      ),
+      memorySize: 256,
+      timeout: Duration.seconds(3),
+      architecture: Architecture.ARM_64,
+      securityGroups: [lambdaSecurityGroup],
+      vpc,
+      environment: {
+        CACHE_HOST: redisCache.attrRedisEndpointAddress,
+        CACHE_PORT: redisCache.attrRedisEndpointPort
+      },
+    });
+
+    const api = new RestApi(this, 'AnnCache_Api', {
+      defaultCorsPreflightOptions: {
+        allowHeaders: Cors.DEFAULT_HEADERS,
+        allowMethods: Cors.ALL_METHODS,
+        allowOrigins: Cors.ALL_ORIGINS
+      },
+    });
+
+    const cacheResource = api.root.addResource('cache');
+    const buildCacheResource = cacheResource.addResource('build');
+    buildCacheResource.addMethod('post', new LambdaIntegration(buildCacheHandler));
+    const clearCacheResource = cacheResource.addResource('clear');
+    clearCacheResource.addMethod('put', new LambdaIntegration(clearCacheHandler))
+    const addToResource = cacheResource.addResource('add');
+    addToResource.addMethod('post', new LambdaIntegration(addToCacheHandler))
+    const searchResource = api.root.addResource('search');
+    searchResource.addMethod('post', new LambdaIntegration(searchCacheHandler))
   }
 }
