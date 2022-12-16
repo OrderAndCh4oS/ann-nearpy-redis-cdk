@@ -12,6 +12,9 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    const dimension = '384'
+    const cacheName = 'all-MiniLM-L6-v2'
+
     // Create a VPC
     const vpc = new ec2.Vpc(this, 'VPC', {
       maxAzs: 2
@@ -33,7 +36,7 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
     // Create a Redis cache
     const redisCache = new cache.CfnCacheCluster(this, 'AnnCacheRedis', {
       engine: 'redis',
-      cacheNodeType: 'cache.t3.small',
+      cacheNodeType: 'cache.t3.micro',
       numCacheNodes: 1,
       vpcSecurityGroupIds: [cacheSecurityGroup.securityGroupId],
       cacheSubnetGroupName: cacheSubnetGroup.ref
@@ -63,7 +66,9 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
       vpc,
       environment: {
         CACHE_HOST: redisCache.attrRedisEndpointAddress,
-        CACHE_PORT: redisCache.attrRedisEndpointPort
+        CACHE_PORT: redisCache.attrRedisEndpointPort,
+        CACHE_DIMENSION: dimension,
+        CACHE_NAME: cacheName
       },
     });
 
@@ -81,7 +86,9 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
       vpc,
       environment: {
         CACHE_HOST: redisCache.attrRedisEndpointAddress,
-        CACHE_PORT: redisCache.attrRedisEndpointPort
+        CACHE_PORT: redisCache.attrRedisEndpointPort,
+        CACHE_DIMENSION: dimension,
+        CACHE_NAME: cacheName
       },
     });
 
@@ -99,7 +106,9 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
       vpc,
       environment: {
         CACHE_HOST: redisCache.attrRedisEndpointAddress,
-        CACHE_PORT: redisCache.attrRedisEndpointPort
+        CACHE_PORT: redisCache.attrRedisEndpointPort,
+        CACHE_DIMENSION: dimension,
+        CACHE_NAME: cacheName
       },
     });
 
@@ -117,7 +126,9 @@ export class NearpyAnnRedisCdkStack extends cdk.Stack {
       vpc,
       environment: {
         CACHE_HOST: redisCache.attrRedisEndpointAddress,
-        CACHE_PORT: redisCache.attrRedisEndpointPort
+        CACHE_PORT: redisCache.attrRedisEndpointPort,
+        CACHE_DIMENSION: dimension,
+        CACHE_NAME: cacheName
       },
     });
 
